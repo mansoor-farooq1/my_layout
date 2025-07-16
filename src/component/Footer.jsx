@@ -8,6 +8,12 @@ const Footer = () => {
                     <p className="text-sm">
                         © {new Date().getFullYear()} youngs. All rights reserved.
                     </p>
+                    {/* <p className="text-sm">
+                        © {new Date().getFullYear()} mansoor. All rights reserved.{' '}
+                        <a href="https://www.facebook.com/share/16nZ3sBzd4/" target="_blank" className="text-blue-600 hover:underline">
+                            mazack tha bro majack bro majack 😂🤣🤪😁
+                        </a>
+                    </p> */}
                 </div>
             </div>
         </footer>

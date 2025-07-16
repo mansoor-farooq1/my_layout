@@ -213,3 +213,41 @@ code {
     opacity: 1;
   }
 }
+
+@media (max-width: 600px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+
+h1 {
+  font-size: 4vw;
+}
+
+@media (max-width: 600px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+
+html,
+body {
+  height: auto;
+  /* or 100% */
+  overflow: auto;
+  /* Ensure this is not hidden */
+}
+
+.mobile-menu {
+  z-index: 50;
+  /* Adjust this to ensure it's correctly layered */
+}
+
+@media (max-width: 767px) {
+  .mobile-menu {
+    height: 100vh;
+    /* Ensuring it's full height */
+    overflow-y: auto;
+    /* Allow scrolling */
+  }
+}

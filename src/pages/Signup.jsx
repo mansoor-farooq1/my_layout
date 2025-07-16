@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { FaFacebook, FaGoogle } from "react-icons/fa";
+import { FaSquareFacebook } from 'react-icons/fa6';
+import gogle from '../images/gogle_logo.png';
+
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -10,6 +14,11 @@ const Signup = () => {
         phone: '',
         acceptTerms: false
     });
+
+
+
+
+
 
     const [errors, setErrors] = useState({});
     const [passwordStrength, setPasswordStrength] = useState(0);
@@ -63,9 +72,11 @@ const Signup = () => {
             newErrors.confirmPassword = 'Passwords do not match';
         }
 
-        if (formData.phone && !/^\+?[\d\s-]+$/.test(formData.phone)) {
-            newErrors.phone = 'Please enter a valid phone number';
+        if (formData.phone && !/^03\d{9}$/.test(formData.phone)) {
+            newErrors.phone = 'Please enter a valid Pakistani phone number like 03001234567';
         }
+
+
 
         if (!formData.acceptTerms) {
             newErrors.acceptTerms = 'You must accept the terms and conditions';
@@ -107,11 +118,13 @@ const Signup = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <button className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition">
-                            <img src="https://placehold.co/24x24" alt="Google logo" className="w-6 h-6" />
+                            <img src={gogle} alt="Google logo" className="w-6 h-6" />
+                            {/* <FaGoogle className='w-6 h-6 text-amber-200  ' /> */}
                             Sign up with Google
                         </button>
                         <button className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition">
-                            <img src="https://placehold.co/24x24" alt="Facebook logo" className="w-6 h-6" />
+                            <FaSquareFacebook className="w-6 h-6 text-[#1877F2]" />
+
                             Sign up with Facebook
                         </button>
                     </div>
@@ -180,7 +193,10 @@ text-gray-900  font-bold
                                 value={formData.phone}
                                 onChange={handleChange}
                                 className={` text-gray-900  font-bold  block w-full px-4 py-2.5 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200`}
-                                placeholder="+1 (555) 123-4567"
+                                placeholder="03XXXXXXXXX"
+                                maxLength={11}
+                                pattern="03[0-9]{9}"
+                                title="Phone number must be 11 digits and start with 03 (e.g., 03001234567)"
                             />
                             {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                         </div>
