@@ -126,12 +126,12 @@ body,
 }
 
 /* Text styles */
-h1 {
+/* h1 {
   font-size: 3rem;
   line-height: 1.1;
   margin-bottom: 1rem;
   color: #333;
-}
+} */
 
 .read-the-docs {
   color: #888;
@@ -249,5 +249,14 @@ body {
     /* Ensuring it's full height */
     overflow-y: auto;
     /* Allow scrolling */
+  }
+}
+
+
+@media (prefers-color-scheme: light) {
+  button {
+    background-color: #f9f9f9;
+    color: black;
+    /* or missing entirely */
   }
 }

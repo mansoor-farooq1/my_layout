@@ -1,94 +1,11 @@
-// import React from 'react';
-// import Layout from '../component/Layout';
-// const users = [
-//     { id: 1, name: 'Alice Johnson', email: 'alice@example.com', password: '12345' },
-//     { id: 2, name: 'Bob Smith', email: 'bob@example.com', password: '12345' },
-//     { id: 3, name: 'Charlie Brown', email: 'charlie@example.com', password: '12345' },
-//     { id: 4, name: 'Diana Prince', email: 'diana@example.com', password: '12345' },
-//     { id: 5, name: 'Ethan Hunt', email: 'ethan@example.com', password: '12345' },
-//     { id: 6, name: 'Fiona Adams', email: 'fiona@example.com', password: '12345' },
-// ];
+import { useEffect, useState } from "react";
+import Layout from "../component/Layout";
+import axios from "axios";
 
-// const StatusGrid = () => {
-//     return (
-//         <Layout>
-//             <div className="p-4">
-//                 <h2 className="text-xl text-gray-700 font-bold mb-4">User List</h2>
-
-//                 {/* Desktop Table */}
-//                 <div className="hidden md:block overflow-x-auto">
-//                     <table className="min-w-full bg-white border border-gray-200 text-left  text-gray-700 ">
-//                         <thead className="bg-gray-100">
-//                             <tr>
-//                                 <th className="p-3 border-b">No:</th>
-//                                 <th className="p-3 border-b">Name</th>
-//                                 <th className="p-3 border-b">Email</th>
-//                                 <th className="p-3 border-b">Password</th>
-//                                 <th className="p-3 border-b">Actions</th>
-//                             </tr>
-//                         </thead>
-//                         <tbody>
-//                             {users.map((user, index) => (
-//                                 <tr key={user.id} className="hover:bg-gray-50">
-//                                     <td className="p-3 border-b font-medium">{index + 1}</td>
-//                                     <td className="p-3 border-b">{user.name}</td>
-//                                     <td className="p-3 border-b">{user.email}</td>
-//                                     <td className="p-3 border-b">{user.password}</td>
-//                                     <td className="p-3 border-b">
-//                                         <button className="text-blue-600 hover:underline">Edit</button>
-//                                         <button className="text-red-600 hover:underline ml-2">Delete</button>
-
-//                                     </td>
-//                                 </tr>
-//                             ))}
-//                         </tbody>
-//                     </table>
-//                 </div>
-
-//                 {/* Mobile Card View */}
-//                 <div className="md:hidden space-y-4">
-//                     {users.map((user, index) => (
-//                         <div
-//                             key={user.id}
-//                             className="bg-white border rounded p-4 shadow-sm"
-//                         >
-//                             <p className="font-semibold text-lg mb-2">{index + 1}</p>
-//                             <p><span className="font-semibold">Name:</span> {user.name}</p>
-//                             <p><span className="font-semibold">Email:</span> {user.email}</p>
-//                             <p><span className="font-semibold">Password:</span> {user.password}</p>
-//                         </div>
-//                     ))}
-//                 </div>
-//             </div>
-//         </Layout>
-//     );
-// };
-
-// export default StatusGrid;
+const Sapservice = () => {
 
 
-
-import React, { useEffect, useState } from 'react';
-import Layout from '../component/Layout';
-import axios from 'axios';
-
-
-
-
-
-// const users = [
-//     { id: 1, name: 'Alice Johnson', email: 'alice@example.com', password: '12345' },
-//     { id: 2, name: 'Bob Smith', email: 'bob@example.com', password: '12345' },
-//     { id: 3, name: 'Charlie Brown', email: 'charlie@example.com', password: '12345' },
-//     { id: 4, name: 'Diana Prince', email: 'diana@example.com', password: '12345' },
-//     { id: 5, name: 'Ethan Hunt', email: 'ethan@example.com', password: '12345' },
-//     { id: 6, name: 'Fiona Adams', email: 'fiona@example.com', password: '12345' },
-// ];
-
-const StatusGrid = () => {
-
-
-    const [users, setUsers] = React.useState([]);
+    const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
 
@@ -122,7 +39,7 @@ const StatusGrid = () => {
 
             <div className="pt-20 p-4 max-w-7xl mx-auto">
                 <div >
-                    <h2 className="text-xl text-gray-700  mb-1 font-extrabold  textAlign: text-center">Services</h2>
+                    <h2 className="text-xl text-gray-700  mb-1 font-extrabold  textAlign: text-center">Sap Services</h2>
                     {/* Desktop View */}
                     <div className="hidden md:block overflow-x-auto">
                         <table className="min-w-full bg-white border text-gray-700 font-bold border-gray-200 shadow-sm">
@@ -178,27 +95,8 @@ const StatusGrid = () => {
                     </div>
                 </div>
 
-
+                {/* mobile view */}
                 <div className="md:hidden mt-6 relative">
-
-                    {/* Overlay click zones for prev/next */}
-                    <div
-                        className="absolute inset-0 flex z-10"
-                        style={{ userSelect: 'none' }} // prevent text selection on taps
-                    >
-                        <div
-                            className="w-1/2 h-full"
-                            onClick={() => {
-                                if (currentPage > 1) setCurrentPage(currentPage - 1);
-                            }}
-                        />
-                        <div
-                            className="w-1/2 h-full"
-                            onClick={() => {
-                                if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-                            }}
-                        />
-                    </div>
 
                     {/* Content, allow pointer events only on buttons */}
                     <div className="relative z-20 pointer-events-none">
@@ -228,18 +126,17 @@ const StatusGrid = () => {
                                     ></span>
                                 </span>
 
-                                {/* Buttons with pointer events enabled */}
+                                {/* Buttons with pointer events enabled
                                 <div className="col-span-4 flex justify-end gap-4 mt-2 pointer-events-auto">
                                     <button className="text-blue-600 text-sm font-medium hover:underline" onClick={() => console.log('Edit', user.id)}>Edit</button>
                                     <button className="text-red-600 text-sm font-medium hover:underline" onClick={() => console.log('Delete', user.id)}>Delete</button>
-                                </div>
+                                </div> */}
                             </div>
                         ))}
                     </div>
                 </div>
 
-
-
+                {/* end point of mobile view */}
 
 
                 <div className="flex justify-center items-center mt-6 gap-4">
@@ -271,4 +168,4 @@ const StatusGrid = () => {
     );
 };
 
-export default StatusGrid;
+export default Sapservice;

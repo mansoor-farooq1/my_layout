@@ -343,316 +343,230 @@
 
 // export default Header;
 
-// import logo from '../images/logoyoun.png';
-// import { Popover, Transition } from '@headlessui/react'
-// import { Fragment, useState } from 'react'
-// import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
-// import { motion } from 'framer-motion'
+// top of file
+// import logo from '../images/real.png';
+// import { useState } from 'react';
+// import { motion, AnimatePresence } from 'framer-motion';
+// import {
+//     Dialog,
+//     Disclosure,
+//     DisclosurePanel,
+//     Popover,
+//     PopoverButton,
+//     PopoverGroup,
+//     PopoverPanel,
+// } from '@headlessui/react';
+// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+// import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-// const services = [
-// { name: 'SAP Analytics', description: 'Business intelligence tools', href: '#' },
-// { name: 'SAP ERP', description: 'Enterprise resource planning', href: '#' },
-// { name: 'SAP HANA', description: 'In-memory database platform', href: '#' }
-// ]
-
-// const dynamicServices = [
-// { name: 'AI Automation', description: 'Smart workflow tools', href: '#' },
-// { name: 'Realtime Data', description: 'Live data streaming', href: '#' },
-// { name: 'Predictive Analytics', description: 'AI-driven forecasting', href: '#' }
-// ]
-
-// const sscpServices = [
-// { name: 'Cyber Security', description: 'Protect your data', href: '#' },
-// { name: 'Secure Cloud', description: 'Encrypted cloud storage', href: '#' },
-// { name: 'Compliance', description: 'Regulatory compliance solutions', href: '#' }
-// ]
-
-// const NavDropdown = ({ title, items }) => (
-// <Popover className="relative">
-// {({ open }) => (
-// <>
-// <Popover.Button className="group flex items-center outline-none">
-// <motion.span
-// className="text-sm font-semibold text-gray-800 hover:text-indigo-600 transition-colors duration-300"
-// whileHover={{
-//    scale: 1.05,
-//    transition: { duration: 0.2 }
-// }}
-// >
-// {title}
-// </motion.span>
-// <motion.div
-// animate={{ rotate: open ? 180 : 0 }}
-// transition={{ duration: 0.2 }}
-// >
-// <ChevronDownIcon className="ml-1 h-5 w-5 text-gray-500 group-hover:text-indigo-600 transition-colors duration-300" />
-// </motion.div>
-// </Popover.Button>
-
-// <Transition
-// as={Fragment}
-// enter="transition ease-out duration-200"
-// enterFrom="opacity-0 translate-y-1"
-// enterTo="opacity-100 translate-y-0"
-// leave="transition ease-in duration-150"
-// leaveFrom="opacity-100 translate-y-0"
-// leaveTo="opacity-0 translate-y-1"
-// >
-// <Popover.Panel className="absolute z-50 left-1/2 mt-3 w-72 -translate-x-1/2 transform">
-// <motion.div
-//    className="rounded-lg shadow-lg ring-1 ring-black/5 overflow-hidden"
-//    initial={{ opacity: 0, y: 10 }}
-//    animate={{ opacity: 1, y: 0 }}
-//    exit={{ opacity: 0, y: 10 }}
-// >
-//    <div className="bg-white p-2">
-//    {items.map((item, index) => (
-//    <motion.div
-//    key={item.name}
-//    whileHover={{ scale: 1.02 }}
-//    whileTap={{ scale: 0.98 }}
-//    initial={{ opacity: 0, x: -10 }}
-//    animate={{ opacity: 1, x: 0 }}
-//    transition={{ delay: index * 0.05 }}
-//    >
-//    <a
-//    href={item.href}
-//    className="block px-4 py-3 rounded-lg hover:bg-indigo-50 transition-colors duration-200"
-//    >
-//    <p className="text-sm font-medium text-indigo-600">{item.name}</p>
-//    <p className="mt-1 text-xs text-gray-500">{item.description}</p>
-//    </a>
-//    </motion.div>
-//    ))}
-//    </div>
-// </motion.div>
-// </Popover.Panel>
-// </Transition>
-// </>
-// )}
-// </Popover>
-// )
 
 // const Header = () => {
-// const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+//     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+//     const [hoveredItem, setHoveredItem] = useState(null);
 
-// return (
-// <header className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
-// <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-// <nav className="flex items-center justify-between h-16">
-// {/* Logo */}
-// {/* <motion.div
-// className="flex-shrink-0"
-// initial={{ opacity: 0, x: -20 }}
-// animate={{ opacity: 1, x: 0 }}
-// transition={{ duration: 0.5 }}
-// >
-// <a href="#" className="flex items-center">
-//    <img
-//    className="h-8 w-auto"
-//    src={logo}
-//    alt="Company Logo"
-//    />
-// </a>
-// </motion.div> */}
-// <motion.div
-// className="flex-shrink-0"
-// initial={{ opacity: 0, x: -20 }}
-// animate={{ opacity: 1, x: 0 }}
-// transition={{ duration: 0.5 }}
-// >
-// <a href="#" className="flex items-center">
-//    <img
-//    className="h-10 w-auto transition-transform duration-300 hover:scale-105"
-//    src={logo}
-//    alt="Company Logo"
-//    />
-// </a>
-// </motion.div>
+//     const renderDropdown = (label, data) => (
+//         <Popover className="relative">
+//             {({ open }) => (
+//                 <>
+//                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+//                         <PopoverButton
+//                             // className="flex items-center text-sm  text-black font-semibold hover:text-indigo-600 gap-x-1"
+//                             className="overflow-hidden shadow-none rounded-xl ring-0"
+//                             onMouseEnter={() => setHoveredItem(label)}
+//                             onMouseLeave={() => setHoveredItem(null)}
+//                         >
+//                             {label}
+//                             <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
+//                                 <ChevronDownIcon className="size-5 text-black" />
+//                             </motion.div>
+//                             {/* {hoveredItem === label && (
+//                                 <motion.span
+//                                     className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600"
+//                                     layoutId="underline"
+//                                     initial={{ width: 0 }}
+//                                     animate={{ width: '100%' }}
+//                                     transition={{ duration: 0.3 }}
+//                                 />
+//                             )} */}
+//                         </PopoverButton>
+//                     </motion.div>
 
-// {/* Desktop Navigation */}
-// <div className="hidden md:flex items-center space-x-8">
-// <motion.a
-//    href="/"
-//    className="text-sm font-semibold text-gray-700 hover:text-indigo-600 transition-colors duration-300"
-//    whileHover={{ scale: 1.05 }}
-// >
-//    Home
-// </motion.a>
+//                     <AnimatePresence>
+//                         {open && (
+//                             <motion.div
+//                                 initial={{ opacity: 0, y: -10 }}
+//                                 animate={{ opacity: 1, y: 0 }}
+//                                 exit={{ opacity: 0, y: -10 }}
+//                                 transition={{ duration: 0.2 }}
+//                             >
+//                                 <PopoverPanel className="absolute z-10 w-screen max-w-md mt-3 -translate-x-1/2 left-1/2" static>
+//                                     <motion.div className="overflow-hidden bg-white shadow-xl rounded-xl ring-1 ring-gray-900/5">
+//                                         <div className="p-4">
+//                                             <ul className="space-y-3">
+//                                                 {data.map((item) => (
+//                                                     <motion.li
+//                                                         key={item.name}
+//                                                         className="flex items-start p-3 text-sm rounded-lg hover:bg-gray-50 transition"
+//                                                         whileHover={{ x: 5 }}
+//                                                     >
+//                                                         <div className="flex-auto">
+//                                                             <a href={item.href} className="block font-semibold text-gray-900">
+//                                                                 {item.name}
+//                                                                 <span className="absolute inset-0" />
+//                                                             </a>
+//                                                             <p className="mt-0.5 text-gray-600">{item.description}</p>
+//                                                         </div>
+//                                                     </motion.li>
+//                                                 ))}
+//                                             </ul>
+//                                         </div>
+//                                     </motion.div>
+//                                 </PopoverPanel>
+//                             </motion.div>
+//                         )}
+//                     </AnimatePresence>
+//                 </>
+//             )}
+//         </Popover>
+//     );
 
-// <NavDropdown title="Services" items={services} />
-// <NavDropdown title="Dynamic" items={dynamicServices} />
-// <NavDropdown title="Security" items={sscpServices} />
+//     return (
+//         <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur shadow-md">
+//             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//                 <nav className="flex items-center justify-between py-2">
+//                     <a href="/" className="flex justify-start lg:flex-1">
+//                         <img src={logo} alt="Logo" className="w-[80px] h-[40px]" />
+//                     </a>
 
+//                     <div className="flex lg:hidden">
+//                         <button onClick={() => setMobileMenuOpen(true)} className="p-2 text-gray-700">
+//                             <Bars3Icon className="size-6" />
+//                         </button>
+//                     </div>
 
-
-// <motion.div
-//    whileHover={{ scale: 1.05 }}
-//    whileTap={{ scale: 0.95 }}
-//    className="relative"
-// >
-//    <a
-//    href="/login"
-//    className="flex items-center justify-center px-4 py-2 rounded-md bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg hover:shadow-indigo-500/30 transition-all duration-300"
-//    >
-//    <span className="text-sm font-semibold">Login</span>
-//    <motion.span
-//    className="ml-1"
-//    animate={{ x: [0, 4, 0] }}
-//    transition={{ repeat: Infinity, duration: 2 }}
-//    >
-//    →
-//    </motion.span>
-//    </a>
-//    <motion.div
-//    className="absolute inset-0 rounded-md bg-gradient-to-r from-purple-600 to-indigo-500 opacity-0 hover:opacity-20 transition-opacity duration-300 pointer-events-none"
-//    />
-// </motion.div>
-// </div>
-
-// {/* Mobile menu button */}
-// <div className="flex md:hidden">
-// <motion.button
-//    type="button"
-//    onClick={() => setMobileMenuOpen(true)}
-//    className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-indigo-600 hover:bg-gray-100 focus:outline-none"
-//    whileHover={{ scale: 1.1 }}
-//    whileTap={{ scale: 0.9 }}
-// >
-//    <span className="sr-only">Open main menu</span>
-//    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-// </motion.button>
-// </div>
-// </nav>
-// </div>
-
-// {/* Mobile Navigation */}
-// <Transition
-// show={mobileMenuOpen}
-// as={Fragment}
-// enter="transition ease-out duration-100"
-// enterFrom="transform opacity-0 scale-95"
-// enterTo="transform opacity-100 scale-100"
-// leave="transition ease-in duration-75"
-// leaveFrom="transform opacity-100 scale-100"
-// leaveTo="transform opacity-0 scale-95"
-// >
-// <div className="md:hidden fixed inset-0 z-50 bg-white/95 backdrop-blur-sm">
-// <div className="flex items-center justify-between px-4 pt-4">
-// <a href="#" className="flex items-center">
-//    <img
-//    className="h-8 w-auto"
-//    src="https://placehold.co/160x80?text=Company+Logo"
-//    alt="Company Logo"
-//    />
-// </a>
-// <div className="flex">
-//    <motion.button
-//    type="button"
-//    onClick={() => setMobileMenuOpen(false)}
-//    className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-indigo-600 hover:bg-gray-100 focus:outline-none"
-//    whileHover={{ rotate: 90 }}
-//    whileTap={{ scale: 0.9 }}
-//    >
-//    <span className="sr-only">Close menu</span>
-//    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-//    </motion.button>
-// </div>
-// </div>
-// <motion.a
-// href="/"
-// className="block px-4 py-3 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
-// whileHover={{ x: 5 }}
-// >
-// Home
-// </motion.a>
-
-// <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-// <div className="space-y-4 px-4 py-6">
-//    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Services</h3>
-//    {services.map((item) => (
-//    <motion.a
-//    key={item.name}
-//    href={item.href}
-//    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
-//    whileHover={{ x: 5 }}
-//    >
-//    {item.name}
-//    </motion.a>
-//    ))}
-// </div>
-
-// <div className="space-y-4 px-4 py-6">
-//    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Dynamic Services</h3>
-//    {dynamicServices.map((item) => (
-//    <motion.a
-//    key={item.name}
-//    href={item.href}
-//    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
-//    whileHover={{ x: 5 }}
-//    >
-//    {item.name}
-//    </motion.a>
-//    ))}
-// </div>
-
-// <div className="space-y-4 px-4 py-6">
-//    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Security</h3>
-//    {sscpServices.map((item) => (
-//    <motion.a
-//    key={item.name}
-//    href={item.href}
-//    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
-//    whileHover={{ x: 5 }}
-//    >
-//    {item.name}
-//    </motion.a>
-//    ))}
-// </div>
+//                     {/* Desktop menu */}
 
 
 
-// <motion.div
-//    className="px-4 pt-4"
-//    whileHover={{ scale: 1.02 }}
-//    whileTap={{ scale: 0.98 }}
-// >
-//    <a
-//    href="/login"
-//    className="flex items-center justify-center w-full px-4 py-3 rounded-md bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg"
-//    >
-//    <span className="text-sm font-semibold">Login</span>
-//    <motion.span
-//    className="ml-1"
-//    animate={{ x: [0, 4, 0] }}
-//    transition={{ repeat: Infinity, duration: 2 }}
-//    >
-//    →
-//    </motion.span>
-//    </a>
-// </motion.div>
-// </div>
-// </div>
-// </Transition>
-// </header>
-// )
-// }
-
-// export default Header
+//                     {/* <PopoverGroup className="hidden lg:flex lg:gap-x-6"> */}
 
 
-// top of file
-import logo from '../images/ylog.png';
+//                     <div className="hidden lg:flex lg:gap-x-6 space-x-1 text-black   ">
+//                         <a href="/" className="flex items-center text-sm font-semibold  text-black   gap-x-1">
+//                             Home
+//                         </a>
+
+//                         {renderDropdown("Services", services)}
+//                         {renderDropdown("Dynamic", dynamicServices)}
+//                         {renderDropdown("SSCP", sscpServices)}
+//                         {/* </PopoverGroup> */}
+//                     </div>
+//                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+//                         <a
+//                             href="/login"
+//                             className="text-sm font-semibold text-black px-3 py-1.5 rounded-md text-hover:bg-indigo-700"
+//                         >
+//                             Login
+//                         </a>
+//                     </div>
+//                 </nav>
+//             </div>
+
+//             {/* Mobile menu */}
+//             <AnimatePresence>
+//                 {mobileMenuOpen && (
+//                     <Dialog as={motion.div} open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+//                         <motion.div
+//                             className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
+//                             initial={{ opacity: 0 }}
+//                             animate={{ opacity: 1 }}
+//                             exit={{ opacity: 0 }}
+//                         />
+//                         {/* <motion.div
+//                             className="fixed right-0 inset-y-0 w-full sm:max-w-sm bg-white z-50 p-4"
+//                             initial={{ x: '100%' }}
+//                             animate={{ x: 0 }}
+//                             exit={{ x: '100%' }}
+//                         > */}
+//                         <motion.div
+//                             className="fixed right-0 inset-y-0 w-full sm:max-w-sm bg-transparent z-50 p-4"
+//                             initial={{ x: '100%' }}
+//                             animate={{ x: 0 }}
+//                             exit={{ x: '100%' }}
+//                         >
+//                             <div className="flex justify-between items-center mb-4  text-black ">
+//                                 <img src={logo} alt="Logo" className="h-6" />
+//                                 <button onClick={() => setMobileMenuOpen(false)}>
+//                                     <XMarkIcon className="size-6 text-gray-700" />
+//                                 </button>
+//                             </div>
+//                             <div className="space-y-2  text-black rounded-lg   ">
+//                                 <a href="/" className="flex items-center text-sm font-semibold  text-black   gap-x-1">
+//                                     Home
+//                                 </a>
+
+//                                 {/* Mobile Dropdowns */}
+//                                 {[['Services', services], ['Dynamic', dynamicServices], ['SSCP', sscpServices]].map(
+//                                     ([label, data]) => (
+//                                         <Disclosure as="div" key={label}>
+//                                             {({ open }) => (
+//                                                 <>
+//                                                     {/* <DisclosureButton className="w-full flex justify-between px-3 py-2  font-semibold hover:bg-gray-300 rounded-lg">
+//                                                         {label}
+//                                                         <ChevronDownIcon className={`size-5 ${open ? 'rotate-180' : ''}`} />
+//                                                     </DisclosureButton> */}
+//                                                     {/* <Disclosure.Button className="w-full flex justify-between px-3 py-2 font-semibold text-gray-800 hover:bg-gray-300 rounded-lg">
+//                                                         {label}
+//                                                         <ChevronDownIcon className={`size-5 ${open ? 'rotate-180' : ''}`} />
+//                                                     </Disclosure.Button> */}
+//                                                     {/* <Disclosure.Button className="w-full flex justify-between px-3 py-2 font-semibold   text-black hover:text-indigo-600 rounded-lg"> */}
+//                                                     <Disclosure.Button className="w-full flex justify-between px-3 py-2 font-semibold text-black rounded-lg">
+
+//                                                         {label}
+//                                                     </Disclosure.Button>
+
+//                                                     <DisclosurePanel className="space-y-1 pl-6">
+//                                                         {data.map((item) => (
+//                                                             <a
+//                                                                 key={item.name}
+//                                                                 href={item.href}
+//                                                                 className="block py-1 text-sm font-semibold  text-black hover:text-indigo-600"
+//                                                             >
+//                                                                 {item.name}
+//                                                             </a>
+//                                                         ))}
+//                                                     </DisclosurePanel>
+//                                                 </>
+//                                             )}
+//                                         </Disclosure>
+//                                     )
+//                                 )}
+//                                 <a
+//                                     href="/login"
+//                                     className="block px-3 py-2 text-base font-semibold text-black hover:text-indigo-600"
+//                                 >
+//                                     Login
+//                                 </a>
+//                             </div>
+//                         </motion.div>
+//                     </Dialog>
+//                 )}
+//             </AnimatePresence>
+//         </header>
+//     );
+// };
+
+// export default Header;
+
+
+import logo from '../images/real.png';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Dialog,
     Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
     Popover,
     PopoverButton,
-    PopoverGroup,
     PopoverPanel,
 } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -661,7 +575,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 // Dropdown data
 const services = [
     { name: 'SAP Api Services', description: 'Api Services checking ', href: '/sapservices', icon: null },
-    { name: 'SAP Service ', description: 'Fast service 2', href: '#', icon: null },
+    { name: 'SAP Service ', description: 'Fast service 2', href: '/statusgrid', icon: null },
 ];
 
 const dynamicServices = [
@@ -674,33 +588,23 @@ const sscpServices = [
     { name: 'SSCP 2', description: 'SSCP desc 2', href: '#', icon: null },
 ];
 
+
 const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [hoveredItem, setHoveredItem] = useState(null);
 
     const renderDropdown = (label, data) => (
         <Popover className="relative">
             {({ open }) => (
                 <>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <PopoverButton
-                            className="flex items-center text-sm font-semibold text-gray-700 hover:text-indigo-600 gap-x-1"
-                            onMouseEnter={() => setHoveredItem(label)}
-                            onMouseLeave={() => setHoveredItem(null)}
-                        >
+                        <PopoverButton className="flex items-center text-sm font-semibold text-black gap-x-1">
                             {label}
-                            <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                                <ChevronDownIcon className="size-5 text-gray-400" />
+                            <motion.div
+                                animate={{ rotate: open ? 180 : 0 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                <ChevronDownIcon className="h-5 w-5 text-black" />
                             </motion.div>
-                            {hoveredItem === label && (
-                                <motion.span
-                                    className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600"
-                                    layoutId="underline"
-                                    initial={{ width: 0 }}
-                                    animate={{ width: '100%' }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                            )}
                         </PopoverButton>
                     </motion.div>
 
@@ -711,29 +615,24 @@ const Header = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
                                 transition={{ duration: 0.2 }}
+                                className="absolute z-20 left-1/2 -translate-x-1/2 mt-3 w-64"
                             >
-                                <PopoverPanel className="absolute z-10 w-screen max-w-md mt-3 -translate-x-1/2 left-1/2" static>
-                                    <motion.div className="overflow-hidden bg-white shadow-xl rounded-xl ring-1 ring-gray-900/5">
-                                        <div className="p-4">
-                                            <ul className="space-y-3">
-                                                {data.map((item) => (
-                                                    <motion.li
-                                                        key={item.name}
-                                                        className="flex items-start p-3 text-sm rounded-lg hover:bg-gray-50 transition"
-                                                        whileHover={{ x: 5 }}
+                                <PopoverPanel static>
+                                    <div className="rounded-xl shadow-xl ring-1 ring-black/5 bg-white backdrop-blur-md bg-opacity-90">
+                                        <ul className="divide-y divide-gray-100">
+                                            {data.map((item) => (
+                                                <li key={item.name}>
+                                                    <a
+                                                        href={item.href}
+                                                        className="block p-4 text-sm font-medium text-gray-800 hover:text-indigo-600 transition-all duration-150"
                                                     >
-                                                        <div className="flex-auto">
-                                                            <a href={item.href} className="block font-semibold text-gray-900">
-                                                                {item.name}
-                                                                <span className="absolute inset-0" />
-                                                            </a>
-                                                            <p className="mt-0.5 text-gray-600">{item.description}</p>
-                                                        </div>
-                                                    </motion.li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </motion.div>
+                                                        {item.name}
+                                                        <p className="text-xs text-gray-500">{item.description}</p>
+                                                    </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </PopoverPanel>
                             </motion.div>
                         )}
@@ -745,106 +644,121 @@ const Header = () => {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur shadow-md">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <nav className="flex items-center justify-between py-2">
-                    <a href="/" className="flex justify-start lg:flex-1">
-                        <img src={logo} alt="Logo" className="w-[80px] h-[40px]" />
-                    </a>
-
-                    <div className="flex lg:hidden">
-                        <button onClick={() => setMobileMenuOpen(true)} className="p-2 text-gray-700">
-                            <Bars3Icon className="size-6" />
-                        </button>
+                    <div className="flex-1 flex items-center lg:justify-start">
+                        <a href="/">
+                            <img src={logo} alt="Logo" className="h-10 w-auto" />
+                        </a>
                     </div>
 
-                    {/* Desktop menu */}
-                    <PopoverGroup className="hidden lg:flex lg:gap-x-6">
-                        <a href="/" className="text-sm font-semibold text-gray-700 hover:text-indigo-600">
+                    {/* Mobile menu button */}
+                    <div className="lg:hidden ">
+                        <motion.button
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => setMobileMenuOpen(true)}
+                            className="p-2 text-black focus:outline-none"
+                        >
+                            <Bars3Icon className="h-6 w-6" />
+                        </motion.button>
+                    </div>
+
+                    {/* Desktop navigation */}
+                    <div className="hidden lg:flex lg:items-center lg:space-x-6">
+                        <a
+                            href="/"
+                            className="text-sm font-semibold text-black hover:scale-105 transition"
+                        >
                             Home
                         </a>
-                        {renderDropdown("Services", services)}
-                        {renderDropdown("Dynamic", dynamicServices)}
-                        {renderDropdown("SSCP", sscpServices)}
-                    </PopoverGroup>
-
-                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                        {renderDropdown('Services', services)}
+                        {renderDropdown('Dynamic', dynamicServices)}
+                        {renderDropdown('SSCP', sscpServices)}
                         <a
                             href="/login"
-                            className="text-sm font-semibold text-white bg-indigo-600 px-3 py-1.5 rounded-md hover:bg-indigo-700"
+                            className="text-sm font-semibold text-black px-3 py-1 rounded-md hover:scale-105 transition"
                         >
                             Login
                         </a>
                     </div>
                 </nav>
             </div>
+            {/* mobile menu  */}
 
-            {/* Mobile menu */}
+
             <AnimatePresence>
                 {mobileMenuOpen && (
-                    <Dialog as={motion.div} open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
-                        <motion.div
-                            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                        />
-                        <motion.div
-                            className="fixed right-0 inset-y-0 w-full sm:max-w-sm bg-white z-50 p-4"
-                            initial={{ x: '100%' }}
-                            animate={{ x: 0 }}
-                            exit={{ x: '100%' }}
-                        >
-                            <div className="flex justify-between items-center mb-4">
-                                <img src={logo} alt="Logo" className="h-6" />
-                                <button onClick={() => setMobileMenuOpen(false)}>
-                                    <XMarkIcon className="size-6 text-gray-700" />
-                                </button>
-                            </div>
-                            <div className="space-y-2">
-                                <a href="/" className="block px-3 py-2 text-base font-semibold text-gray-900 rounded-lg hover:bg-gray-50">
-                                    Home
-                                </a>
+                    <Dialog
+                        open={mobileMenuOpen}
+                        onClose={() => setMobileMenuOpen(false)}
+                        className="relative z-50 lg:hidden"
+                    >
+                        <div className="fixed inset-0 bg-black/50" aria-hidden="true" onClick={() => setMobileMenuOpen(false)} />
 
-                                {/* Mobile Dropdowns */}
-                                {[['Services', services], ['Dynamic', dynamicServices], ['SSCP', sscpServices]].map(
-                                    ([label, data]) => (
-                                        <Disclosure as="div" key={label}>
+                        <div className="fixed inset-y-0 right-0 flex max-w-xs w-full">
+                            <motion.div
+                                className="bg-white p-6 w-full h-full"
+                                initial={{ x: '100%' }}
+                                animate={{ x: 0 }}
+                                exit={{ x: '100%' }}
+                            >
+                                {/* Menu Header */}
+                                <div className="flex justify-between items-center mb-6">
+                                    <img src={logo} alt="Logo" className="h-8 w-auto" />
+                                    <motion.button
+                                        whileTap={{ scale: 0.95 }}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className="text-black focus:outline-none"
+                                    >
+                                        <XMarkIcon className="h-6 w-6" />
+                                    </motion.button>
+                                </div>
+
+
+                                {/* Navigation links */}
+                                <div className="space-y-3">
+                                    <a href="/" className="block text-sm font-semibold text-black">Home</a>
+
+                                    {[
+                                        ['Services', services],
+                                        ['Dynamic', dynamicServices],
+                                        ['SSCP', sscpServices],
+                                    ].map(([label, data]) => (
+                                        <Disclosure key={label}>
                                             {({ open }) => (
                                                 <>
-                                                    <DisclosureButton className="w-full flex justify-between px-3 py-2 text-base font-semibold hover:bg-gray-50 rounded-lg">
+                                                    <Disclosure.Button className="flex justify-between w-full py-2 text-sm font-semibold text-black">
                                                         {label}
-                                                        <ChevronDownIcon className={`size-5 ${open ? 'rotate-180' : ''}`} />
-                                                    </DisclosureButton>
-                                                    <DisclosurePanel className="space-y-1 pl-6">
-                                                        {data.map((item) => (
+                                                        <ChevronDownIcon className={`h-5 w-5 transition-transform ${open ? 'rotate-180' : ''}`} />
+                                                    </Disclosure.Button>
+                                                    <Disclosure.Panel className="pl-4 space-y-1">
+                                                        {data.map(item => (
                                                             <a
                                                                 key={item.name}
                                                                 href={item.href}
-                                                                className="block py-1 text-sm text-gray-700 hover:text-indigo-600"
+                                                                className="block py-1 text-sm font-normal text-black"
                                                             >
                                                                 {item.name}
                                                             </a>
                                                         ))}
-                                                    </DisclosurePanel>
+                                                    </Disclosure.Panel>
                                                 </>
                                             )}
                                         </Disclosure>
-                                    )
-                                )}
-                                <a
-                                    href="/login"
-                                    className="block px-3 py-2 text-base font-semibold text-indigo-600 hover:bg-gray-50"
-                                >
-                                    Login
-                                </a>
-                            </div>
-                        </motion.div>
+                                    ))}
+
+                                    <a href="/login" className="block text-sm font-semibold text-black">Login</a>
+                                </div>
+                            </motion.div>
+                        </div>
                     </Dialog>
                 )}
             </AnimatePresence>
+
+
+
         </header>
     );
 };
 
 export default Header;
-
