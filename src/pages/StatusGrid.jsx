@@ -1,89 +1,8 @@
-// import React from 'react';
-// import Layout from '../component/Layout';
-// const users = [
-//     { id: 1, name: 'Alice Johnson', email: 'alice@example.com', password: '12345' },
-//     { id: 2, name: 'Bob Smith', email: 'bob@example.com', password: '12345' },
-//     { id: 3, name: 'Charlie Brown', email: 'charlie@example.com', password: '12345' },
-//     { id: 4, name: 'Diana Prince', email: 'diana@example.com', password: '12345' },
-//     { id: 5, name: 'Ethan Hunt', email: 'ethan@example.com', password: '12345' },
-//     { id: 6, name: 'Fiona Adams', email: 'fiona@example.com', password: '12345' },
-// ];
-
-// const StatusGrid = () => {
-//     return (
-//         <Layout>
-//             <div className="p-4">
-//                 <h2 className="text-xl text-gray-700 font-bold mb-4">User List</h2>
-
-//                 {/* Desktop Table */}
-//                 <div className="hidden md:block overflow-x-auto">
-//                     <table className="min-w-full bg-white border border-gray-200 text-left  text-gray-700 ">
-//                         <thead className="bg-gray-100">
-//                             <tr>
-//                                 <th className="p-3 border-b">No:</th>
-//                                 <th className="p-3 border-b">Name</th>
-//                                 <th className="p-3 border-b">Email</th>
-//                                 <th className="p-3 border-b">Password</th>
-//                                 <th className="p-3 border-b">Actions</th>
-//                             </tr>
-//                         </thead>
-//                         <tbody>
-//                             {users.map((user, index) => (
-//                                 <tr key={user.id} className="hover:bg-gray-50">
-//                                     <td className="p-3 border-b font-medium">{index + 1}</td>
-//                                     <td className="p-3 border-b">{user.name}</td>
-//                                     <td className="p-3 border-b">{user.email}</td>
-//                                     <td className="p-3 border-b">{user.password}</td>
-//                                     <td className="p-3 border-b">
-//                                         <button className="text-blue-600 hover:underline">Edit</button>
-//                                         <button className="text-red-600 hover:underline ml-2">Delete</button>
-
-//                                     </td>
-//                                 </tr>
-//                             ))}
-//                         </tbody>
-//                     </table>
-//                 </div>
-
-//                 {/* Mobile Card View */}
-//                 <div className="md:hidden space-y-4">
-//                     {users.map((user, index) => (
-//                         <div
-//                             key={user.id}
-//                             className="bg-white border rounded p-4 shadow-sm"
-//                         >
-//                             <p className="font-semibold text-lg mb-2">{index + 1}</p>
-//                             <p><span className="font-semibold">Name:</span> {user.name}</p>
-//                             <p><span className="font-semibold">Email:</span> {user.email}</p>
-//                             <p><span className="font-semibold">Password:</span> {user.password}</p>
-//                         </div>
-//                     ))}
-//                 </div>
-//             </div>
-//         </Layout>
-//     );
-// };
-
-// export default StatusGrid;
-
-
-
 import React, { useEffect, useState } from 'react';
 import Layout from '../component/Layout';
 import axios from 'axios';
 
 
-
-
-
-// const users = [
-//     { id: 1, name: 'Alice Johnson', email: 'alice@example.com', password: '12345' },
-//     { id: 2, name: 'Bob Smith', email: 'bob@example.com', password: '12345' },
-//     { id: 3, name: 'Charlie Brown', email: 'charlie@example.com', password: '12345' },
-//     { id: 4, name: 'Diana Prince', email: 'diana@example.com', password: '12345' },
-//     { id: 5, name: 'Ethan Hunt', email: 'ethan@example.com', password: '12345' },
-//     { id: 6, name: 'Fiona Adams', email: 'fiona@example.com', password: '12345' },
-// ];
 
 const StatusGrid = () => {
 
@@ -113,10 +32,6 @@ const StatusGrid = () => {
 
     const totalPages = Math.ceil(users.length / itemsPerPage);
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-
-
-
-
     return (
         <Layout>
 

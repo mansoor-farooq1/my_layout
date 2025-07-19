@@ -14,4 +14,4 @@ first install my project
 
 then use this npm i
 
-then use this npm run dev
+then use this npm run dev 
